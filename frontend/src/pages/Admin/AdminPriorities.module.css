@@ -1,0 +1,131 @@
+.adminDashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.adminContent {
+  flex-grow: 1;
+  margin-left: 300px; /* Sidebar width */
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.adminTitle {
+  font-size: 1.8rem;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+/* Stat Boxes */
+.priorityStats {
+  display: flex;
+  justify-content: space-between; /* Ensures equal spacing between boxes */
+  gap: 20px; /* Adds consistent spacing between stat boxes */
+  margin-bottom: 20px; /* Adds spacing below the entire stat section */
+}
+
+.statBox {
+  flex: 1; /* Ensures all stat boxes have equal width */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.priorityHighBox {
+  background-color: #e74c3c;
+}
+
+.priorityMediumBox {
+  background-color: #f39c12;
+}
+
+.priorityLowBox {
+  background-color: #27ae60;
+}
+
+/* Table */
+.adminTicketTable {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.adminTicketTable th,
+.adminTicketTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.adminTicketTable th {
+  background-color: #053c6f;
+  color: #ffffff;
+}
+
+.adminTicketTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.adminTicketTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Priority Styles */
+.priorityHigh {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.priorityMedium {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.priorityLow {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.sortableColumn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sortableColumn:hover {
+  color: #007bff;
+}
+
+.sortIcon {
+  font-size: 0.8rem;
+  color: #007bff;
+}
+
+/* Action Button */
+.actionButton {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+}
+
+.reprioritizeButton {
+  background-color: #3498db;
+}
+
+.reprioritizeButton:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+.reprioritizeButton:hover {
+  background-color: #2980b9;
+}

@@ -1,0 +1,41 @@
+.mainSection {
+  background-color: #053c6f;
+  color: white;
+  height: 91.1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contentBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.4;
+}
+
+.coverImage {
+  width: 60%; /* Adjust this percentage as needed */
+  max-width: 500px; /* To keep the image from getting too large on larger screens */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px;
+}
+
+.signInBtn {
+  background-color: #ffe492;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.signInBtn:hover {
+  background-color: #ffe492;
+}

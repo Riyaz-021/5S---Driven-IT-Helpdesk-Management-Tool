@@ -1,0 +1,110 @@
+.pageContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f6f9; /* Light background to make the container stand out */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width for the sidebar */
+}
+
+.mainContent {
+  flex: 1; /* Takes up remaining space */
+  margin-left: 300px;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ticketDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+.ticketDetails p {
+  margin: 0;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
+.priorityHigh {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.priorityMedium {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.priorityLow {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.statusOpen {
+  color: #3498db;
+  font-weight: bold;
+}
+
+.statusInProgress {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.statusClosed {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.error {
+  color: #e74c3c;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.closeTicketBtn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.closeTicketBtn:hover {
+  background-color: #c0392b;
+}
+
+.closeTicketBtn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}

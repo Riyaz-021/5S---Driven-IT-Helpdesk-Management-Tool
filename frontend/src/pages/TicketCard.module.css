@@ -1,0 +1,106 @@
+.ticketCard {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticketHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ticketId {
+  font-weight: bold;
+  color: #555;
+}
+
+.ticketTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.ticketDetails {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.ticketMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+/* Priority styles */
+.priority {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.highPriority {
+  color: #ff4d4d;
+}
+
+.mediumPriority {
+  color: #ffcc00;
+}
+
+.lowPriority {
+  color: #66cc66;
+}
+
+/* Status styles */
+.status {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.inProgress {
+  color: #ff9900;
+}
+
+.open {
+  color: #4caf50;
+}
+
+.closed {
+  color: #f44336;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.viewBtn {
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.viewBtn:hover {
+  background-color: #2980b9;
+}
+
+.deleteBtn {
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.deleteBtn:hover {
+  background-color: #c0392b;
+}

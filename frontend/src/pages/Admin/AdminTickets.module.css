@@ -1,0 +1,129 @@
+.adminDashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.adminContent {
+  flex: 1;
+  margin-left: 300px;
+  padding: 20px;
+}
+
+.adminTitle {
+  font-size: 1.8rem;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.searchIcon {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.adminTicketTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.adminTicketTable th,
+.adminTicketTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.adminTicketTable th {
+  background-color: #053c6f;
+  color: #ffffff;
+}
+
+.adminTicketTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.adminTicketTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.adminViewBtn {
+  padding: 5px 10px;
+  background-color: #27ae60;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.adminEditBtn {
+  padding: 5px 10px;
+  background-color: #f39c12;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.adminDeleteBtn {
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Priority Styles */
+.priorityHigh {
+  color: #e74c3c; /* Red */
+  font-weight: bold;
+}
+
+.priorityMedium {
+  color: #f39c12; /* Yellow/Orange */
+  font-weight: bold;
+}
+
+.priorityLow {
+  color: #27ae60; /* Green */
+  font-weight: bold;
+}
+
+/* Status Styles */
+.statusOpen {
+  color: #ff3d3d; /* Blue */
+  font-weight: bold;
+}
+
+.statusAssigned {
+  color: #f39c12; /* Yellow/Orange */
+  font-weight: bold;
+}
+
+.statusInProgress {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.statusResolved {
+  color: #27ae60; /* Green */
+  font-weight: bold;
+}
+
+.statusClosed {
+  color: #3498db; /* Green */
+  font-weight: bold;
+}

@@ -1,0 +1,161 @@
+/* Container for split layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left section with gradient background */
+.leftSection {
+  flex: 1;
+  background: linear-gradient(135deg, #053c6f, #024a9b);
+  color: white;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Text content in the left section */
+.leftSectionContent {
+  margin-bottom: 300px;
+  z-index: 2; /* Ensure text is above the image */
+  position: relative;
+}
+
+.leftSection h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.leftSection p {
+  font-size: 1.2rem;
+  max-width: 300px;
+  margin-bottom: 2rem;
+}
+
+/* Wrapper for the image peeking from the bottom right */
+.imageWrapper {
+  position: absolute;
+  bottom: -80px; /* Adjust bottom position to keep part of the image off-screen */
+  right: -100px; /* Adjust right position for a larger peeking effect */
+  width: 600px; /* Increased width for a larger image */
+  z-index: 1; /* Place image behind text */
+}
+
+/* Style for the image */
+.image {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Right section with form styling */
+.rightSection {
+  flex: 1;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Form styling */
+form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border: 1px solid grey;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(154, 216, 255, 0.83);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  color: #666;
+  text-align: left;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #053c6f;
+  box-shadow: 0 0 8px rgba(5, 60, 111, 0.2);
+}
+
+/* Error message styling */
+.error {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+/* Login button styling */
+.loginBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #053c6f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.loginBtn:hover {
+  background-color: #024a9b;
+}
+
+/* Link styling */
+a {
+  color: #053c6f;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.back:hover {
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .leftSection {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .imageWrapper {
+    display: none; /* Hide image on smaller screens */
+  }
+}

@@ -1,0 +1,48 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100vh;
+  background-color: #053c6f;
+  color: #ecf0f1;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.brand {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.link:hover {
+  color: #ffe492;
+}
+
+.signOutBtn {
+  margin-top: auto; /* This pushes the button to the bottom */
+  padding: 10px;
+  font-size: 1em;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.signOutBtn:hover {
+  background-color: #c0392b;
+}

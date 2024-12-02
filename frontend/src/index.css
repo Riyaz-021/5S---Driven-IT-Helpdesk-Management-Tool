@@ -1,0 +1,70 @@
+/* index.css */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #f9f9f9;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Global styling for scrollbars */
+* {
+  scrollbar-width: none; /* Hide scrollbar in Firefox by default */
+  -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
+}
+
+/* Show the scrollbar on hover */
+*::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* Thumb color (hidden by default) */
+  border-radius: 4px; /* Rounded edges */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker thumb color on hover */
+}
+
+/* Hover-activated scrollbar for scrollable elements */
+body,
+html,
+.scrollable {
+  overflow-y: auto; /* Ensure scrollable when content exceeds height */
+}
+
+body:hover,
+html:hover,
+.scrollable:hover {
+  scrollbar-width: thin; /* Show a thin scrollbar in Firefox */
+  scrollbar-color: #888 transparent; /* Customize scrollbar colors */
+}
+
+body:hover::-webkit-scrollbar,
+html:hover::-webkit-scrollbar,
+.scrollable:hover::-webkit-scrollbar {
+  display: block; /* Show scrollbar on hover */
+  width: 8px; /* Adjust the scrollbar width */
+}
+
+body:hover::-webkit-scrollbar-thumb,
+html:hover::-webkit-scrollbar-thumb,
+.scrollable:hover::-webkit-scrollbar-thumb {
+  background-color: #888; /* Visible scrollbar thumb */
+}
+
+body:hover::-webkit-scrollbar-thumb:hover,
+html:hover::-webkit-scrollbar-thumb:hover,
+.scrollable:hover::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker scrollbar thumb on hover */
+}
