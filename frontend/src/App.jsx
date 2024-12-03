@@ -21,6 +21,7 @@ import AddUser from "./pages/Admin/AddUser.jsx";
 import EditUser from "./pages/Admin/EditUser.jsx";
 import AgentDashboard from "./pages/Agent/AgentDashboard.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import AgentTickets from "./pages/Agent/AgentTickets.jsx";
 
 function App() {
   return (
@@ -139,6 +140,15 @@ function App() {
           element={
             <ProtectedRoute requiredRole="Agent">
               <AgentDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/helpdesk/agent_tickets"
+          element={
+            <ProtectedRoute requiredRole="Agent">
+              <AgentTickets />
             </ProtectedRoute>
           }
         />

@@ -534,6 +534,61 @@ app.delete(
   }
 );
 
+/* Agent Routes */
+
+/* Agent Tickets */
+app.get(
+  "/helpdesk/agent_tickets",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const agentId = req.user.id; // Extract agent's ID from JWT
+      const tickets = await Ticket.find({
+        assignedTo: new mongoose.Types.ObjectId(agentId),
+      }); // Fetch tickets assigned to the agent
+      res.json(tickets);
+    } catch (err) {
+      console.error("Error fetching agent tickets:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+/* Take-up Ticket */
+app.patch(
+  "/helpdesk/agent_tickets/:ticketId/take-up",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const { ticketId } = req.params;
+      const agentId = req.user.id; // Get the logged-in agent's ID from JWT
+
+      const ticket = await Ticket.findById(ticketId);
+
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      if (ticket.assignedTo && ticket.assignedTo.toString() !== agentId) {
+        return res
+          .status(403)
+          .json({ message: "Ticket already assigned to another agent" });
+      }
+
+      ticket.assignedTo = agentId; // Assign the ticket to the agent
+      ticket.status = "In Progress"; // Update the status
+      await ticket.save();
+
+      res.json({ message: "Ticket taken up successfully" });
+    } catch (err) {
+      console.error("Error taking up ticket:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
 /* Role Authentication */
 app.get("/helpdesk/auth-status", authenticateUser, (req, res) => {
   res.status(200).json({ role: req.user.role });
