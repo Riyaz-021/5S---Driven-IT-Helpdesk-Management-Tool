@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./AgentSidebar.module.css";
 
 const AgentSidebar = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(""); // State to track the active tab
+  const location = useLocation(); // Get the current location
+  const [activeTab, setActiveTab] = useState(location.pathname); // Initialize with current path
 
   const handleLogout = async () => {
     try {
@@ -22,8 +23,13 @@ const AgentSidebar = () => {
     }
   };
 
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName); // Set the clicked tab as active
+  useEffect(() => {
+    // Update activeTab whenever the path changes
+    setActiveTab(location.pathname);
+  }, [location]);
+
+  const handleTabClick = (path) => {
+    setActiveTab(path); // Update the activeTab state
   };
 
   return (
@@ -35,9 +41,9 @@ const AgentSidebar = () => {
       <div className={styles.links}>
         <Link
           to="/helpdesk/agent_dashboard"
-          onClick={() => handleTabClick("dashboard")}
+          onClick={() => handleTabClick("/helpdesk/agent_dashboard")}
           className={`${styles.link} ${
-            activeTab === "dashboard" ? styles.active : ""
+            activeTab === "/helpdesk/agent_dashboard" ? styles.active : ""
           }`}
         >
           <i className="fas fa-tachometer-alt"></i> Dashboard
@@ -45,9 +51,9 @@ const AgentSidebar = () => {
         <br />
         <Link
           to="/helpdesk/agent_tickets"
-          onClick={() => handleTabClick("tickets")}
+          onClick={() => handleTabClick("/helpdesk/agent_tickets")}
           className={`${styles.link} ${
-            activeTab === "tickets" ? styles.active : ""
+            activeTab === "/helpdesk/agent_tickets" ? styles.active : ""
           }`}
         >
           <i className="fas fa-ticket-alt"></i> MyTickets
@@ -55,9 +61,9 @@ const AgentSidebar = () => {
         <br />
         <Link
           to="/helpdesk/agent_priorities"
-          onClick={() => handleTabClick("priorities")}
+          onClick={() => handleTabClick("/helpdesk/agent_priorities")}
           className={`${styles.link} ${
-            activeTab === "priorities" ? styles.active : ""
+            activeTab === "/helpdesk/agent_priorities" ? styles.active : ""
           }`}
         >
           <i className="fas fa-exclamation-circle"></i> Priorities
@@ -65,9 +71,9 @@ const AgentSidebar = () => {
         <br />
         <Link
           to="/helpdesk/a_statuses"
-          onClick={() => handleTabClick("statuses")}
+          onClick={() => handleTabClick("/helpdesk/a_statuses")}
           className={`${styles.link} ${
-            activeTab === "statuses" ? styles.active : ""
+            activeTab === "/helpdesk/a_statuses" ? styles.active : ""
           }`}
         >
           <i className="fas fa-tasks"></i> Statuses
