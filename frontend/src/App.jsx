@@ -133,7 +133,7 @@ function App() {
           }
         />
 
-        {/* Admin Dashboard Routes */}
+        {/* Agent Dashboard Routes */}
         <Route
           path="/helpdesk/agent_dashboard"
           element={

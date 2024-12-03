@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./AgentSidebar.module.css";
 
 const AgentSidebar = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState(""); // State to track the active tab
 
   const handleLogout = async () => {
     try {
@@ -21,6 +22,10 @@ const AgentSidebar = () => {
     }
   };
 
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName); // Set the clicked tab as active
+  };
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.brand}>IT - HelpDesk</div>
@@ -28,19 +33,43 @@ const AgentSidebar = () => {
       <br />
       <br />
       <div className={styles.links}>
-        <Link to="/helpdesk/agent_dashboard" className={styles.link}>
+        <Link
+          to="/helpdesk/agent_dashboard"
+          onClick={() => handleTabClick("dashboard")}
+          className={`${styles.link} ${
+            activeTab === "dashboard" ? styles.active : ""
+          }`}
+        >
           <i className="fas fa-tachometer-alt"></i> Dashboard
         </Link>
         <br />
-        <Link to="/helpdesk/agent_tickets" className={styles.link}>
+        <Link
+          to="/helpdesk/agent_tickets"
+          onClick={() => handleTabClick("tickets")}
+          className={`${styles.link} ${
+            activeTab === "tickets" ? styles.active : ""
+          }`}
+        >
           <i className="fas fa-ticket-alt"></i> MyTickets
         </Link>
         <br />
-        <Link to="/helpdesk/agent_priorities" className={styles.link}>
+        <Link
+          to="/helpdesk/agent_priorities"
+          onClick={() => handleTabClick("priorities")}
+          className={`${styles.link} ${
+            activeTab === "priorities" ? styles.active : ""
+          }`}
+        >
           <i className="fas fa-exclamation-circle"></i> Priorities
         </Link>
         <br />
-        <Link to="/helpdesk/agent_statuses" className={styles.link}>
+        <Link
+          to="/helpdesk/a_statuses"
+          onClick={() => handleTabClick("statuses")}
+          className={`${styles.link} ${
+            activeTab === "statuses" ? styles.active : ""
+          }`}
+        >
           <i className="fas fa-tasks"></i> Statuses
         </Link>
         <br />

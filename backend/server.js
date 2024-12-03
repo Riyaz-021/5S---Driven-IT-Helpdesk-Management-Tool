@@ -192,7 +192,7 @@ app.post("/helpdesk/login", async (req, res) => {
 
     res.json({ message: "Login successful", role: user.role });
   } catch (err) {
-    console.error("Login Error:", err); // Debug log for errors
+    console.error("Login Error:", err);
     res.status(500).json({ message: "Internal server error" });
   }
 });

@@ -17,7 +17,7 @@ const TicketMetricsBarChart = ({ data }) => {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Bar dataKey="count" fill="#3498db" />
+        <Bar dataKey="count" fill="#3498db" barSize={50} />
       </BarChart>
     </ResponsiveContainer>
   );
