@@ -5,8 +5,8 @@ import styles from "./AdminSidebar.module.css";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get the current location
-  const [activeTab, setActiveTab] = useState(location.pathname); // Initialize with current path
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.pathname);
 
   const handleLogout = async () => {
     try {
