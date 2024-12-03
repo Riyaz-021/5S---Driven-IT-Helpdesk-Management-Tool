@@ -83,7 +83,7 @@ app.get(
   authorizeRole("User"),
   async (req, res) => {
     try {
-      const userTickets = await Ticket.find({ userId: req.user.userId });
+      const userTickets = await Ticket.find({ userId: req.user.id });
       res.json({ tickets: userTickets });
     } catch (error) {
       console.error("Error fetching user tickets:", error);
@@ -199,7 +199,7 @@ app.post("/helpdesk/login", async (req, res) => {
 
 /* Raise Tickets Page */
 app.get("/helpdesk/tickets/create", (req, res) => {
-  res.render("ticket.ejs");
+  res.status(201).json({ message: "create ticket page" });
 });
 
 app.post("/helpdesk/tickets/create", authenticateUser, async (req, res) => {
@@ -210,7 +210,7 @@ app.post("/helpdesk/tickets/create", authenticateUser, async (req, res) => {
       title,
       description,
       priority,
-      userId: req.user.userId,
+      userId: req.user.id,
       status: "Open",
       createdAt: new Date(),
     });
