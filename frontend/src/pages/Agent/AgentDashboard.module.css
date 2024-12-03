@@ -1,0 +1,63 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.heading {
+  margin-top: 8px; /* Adjusted top margin */
+  font-size: 3rem;
+}
+
+.content {
+  flex: 1;
+  margin-left: 300px; /* Match the sidebar width */
+  padding: 20px;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card.assigned {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+.card.inProgress {
+  background-color: #f39c12;
+  color: #ffffff;
+}
+
+.card.resolved {
+  background-color: #27ae60;
+  color: #ffffff;
+}
+
+.chartContainer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

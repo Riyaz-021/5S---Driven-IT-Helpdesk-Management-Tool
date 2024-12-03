@@ -19,6 +19,7 @@ import AdminStatuses from "./pages/Admin/AdminStatuses.jsx";
 import UserManagement from "./pages/Admin/UserManagement.jsx";
 import AddUser from "./pages/Admin/AddUser.jsx";
 import EditUser from "./pages/Admin/EditUser.jsx";
+import AgentDashboard from "./pages/Agent/AgentDashboard.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
@@ -128,6 +129,16 @@ function App() {
           element={
             <ProtectedRoute requiredRole="Admin">
               <EditUser />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Admin Dashboard Routes */}
+        <Route
+          path="/helpdesk/agent_dashboard"
+          element={
+            <ProtectedRoute requiredRole="Agent">
+              <AgentDashboard />
             </ProtectedRoute>
           }
         />

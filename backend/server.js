@@ -118,12 +118,31 @@ app.get(
   }
 );
 
-app.get("/helpdesk/agent_dashboard", authenticateUser, (req, res) => {
-  if (req.user.role !== "Agent") {
-    return res.status(403).send("Access denied");
+app.get(
+  "/helpdesk/agent_dashboard",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const assigned = await Ticket.countDocuments({
+        assignedTo: req.user._id,
+        status: "Assigned",
+      });
+      const inProgress = await Ticket.countDocuments({
+        assignedTo: req.user._id,
+        status: "In Progress",
+      });
+      const resolved = await Ticket.countDocuments({
+        assignedTo: req.user._id,
+        status: "Resolved",
+      });
+
+      res.status(200).json({ assigned, inProgress, resolved });
+    } catch (err) {
+      res.status(500).json({ message: "Error fetching stats", error: err });
+    }
   }
-  res.render("agent_dashboard.ejs");
-});
+);
 
 /* Root */
 app.get("/", (req, res) => {
