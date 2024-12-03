@@ -26,7 +26,7 @@ function DashboardSidebar() {
       <br />
       <br />
       <div className={styles.links}>
-        <Link to="/" className={styles.link}>
+        <Link to="/helpdesk/user_dashboard" className={styles.link}>
           <i className="fas fa-home"></i> Home
         </Link>
         <br />
