@@ -1,45 +1,53 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./AgentSidebar.module.css";
 
 const AgentSidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await axios.get("http://localhost:3000/helpdesk/logout", {
+        withCredentials: true,
+      });
+      navigate("/helpdesk/login");
+      window.location.reload();
+    } catch (error) {
+      console.error(
+        "Error logging out:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.logo}>Agent Panel</h2>
-      <nav className={styles.navLinks}>
-        <NavLink
-          to="/helpdesk/agent_dashboard"
-          className={({ isActive }) =>
-            isActive ? `${styles.link} ${styles.active}` : styles.link
-          }
-        >
-          Dashboard
-        </NavLink>
-        <NavLink
-          to="/helpdesk/agent_tickets"
-          className={({ isActive }) =>
-            isActive ? `${styles.link} ${styles.active}` : styles.link
-          }
-        >
-          My Tickets
-        </NavLink>
-        <NavLink
-          to="/helpdesk/agent_profile"
-          className={({ isActive }) =>
-            isActive ? `${styles.link} ${styles.active}` : styles.link
-          }
-        >
-          Profile
-        </NavLink>
-        <NavLink
-          to="/helpdesk/agent_logout"
-          className={({ isActive }) =>
-            isActive ? `${styles.link} ${styles.active}` : styles.link
-          }
-        >
-          Logout
-        </NavLink>
-      </nav>
+      <div className={styles.brand}>IT - HelpDesk</div>
+      <br />
+      <br />
+      <br />
+      <div className={styles.links}>
+        <Link to="/helpdesk/agent_dashboard" className={styles.link}>
+          <i className="fas fa-tachometer-alt"></i> Dashboard
+        </Link>
+        <br />
+        <Link to="/helpdesk/agent_tickets" className={styles.link}>
+          <i className="fas fa-ticket-alt"></i> MyTickets
+        </Link>
+        <br />
+        <Link to="/helpdesk/agent_priorities" className={styles.link}>
+          <i className="fas fa-exclamation-circle"></i> Priorities
+        </Link>
+        <br />
+        <Link to="/helpdesk/agent_statuses" className={styles.link}>
+          <i className="fas fa-tasks"></i> Statuses
+        </Link>
+        <br />
+        <button onClick={handleLogout} className={styles.signOutBtn}>
+          <i className="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
     </div>
   );
 };
