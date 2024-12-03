@@ -125,20 +125,23 @@ app.get(
   async (req, res) => {
     try {
       const assigned = await Ticket.countDocuments({
-        assignedTo: req.user._id,
+        assignedTo: new mongoose.Types.ObjectId(req.user.id),
         status: "Assigned",
       });
+
       const inProgress = await Ticket.countDocuments({
-        assignedTo: req.user._id,
+        assignedTo: new mongoose.Types.ObjectId(req.user.id),
         status: "In Progress",
       });
+
       const resolved = await Ticket.countDocuments({
-        assignedTo: req.user._id,
+        assignedTo: new mongoose.Types.ObjectId(req.user.id),
         status: "Resolved",
       });
 
       res.status(200).json({ assigned, inProgress, resolved });
     } catch (err) {
+      console.error("Error fetching stats:", err); // Debug log for errors
       res.status(500).json({ message: "Error fetching stats", error: err });
     }
   }
@@ -174,9 +177,11 @@ app.post("/helpdesk/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials!" });
     }
 
-    const token = jwt.sign({ userId: user._id, role: user.role }, "secretKey", {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { id: user._id, role: user.role }, // Ensure id is included
+      "secretKey", // Replace with a secure key
+      { expiresIn: "1h" }
+    );
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -187,7 +192,7 @@ app.post("/helpdesk/login", async (req, res) => {
 
     res.json({ message: "Login successful", role: user.role });
   } catch (err) {
-    console.error(err);
+    console.error("Login Error:", err); // Debug log for errors
     res.status(500).json({ message: "Internal server error" });
   }
 });
