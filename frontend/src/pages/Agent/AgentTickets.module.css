@@ -54,15 +54,23 @@
 }
 
 .status.open {
-  color: #2ecc71;
+  color: #e74c3c;
 }
 
-.status.in-progress {
+.status.assigned {
   color: #f1c40f;
 }
 
-.status.resolved {
+.status.in-progress {
   color: #3498db;
+}
+
+.status.resolved {
+  color: #2ecc71;
+}
+
+.status.closed {
+  color: #747474;
 }
 
 .priority {

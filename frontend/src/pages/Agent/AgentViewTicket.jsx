@@ -127,10 +127,14 @@ const AgentViewTicket = () => {
               <span
                 className={
                   ticket.status === "Open"
-                    ? styles.statusOpen
+                    ? styles.statusopen
+                    : ticket.status === "Assigned"
+                    ? styles.statusassigned
                     : ticket.status === "In Progress"
-                    ? styles.statusInProgress
-                    : styles.statusClosed
+                    ? styles.statusinprogress
+                    : ticket.status === "Resolved"
+                    ? styles.statusresolved
+                    : styles.statusclosed
                 }
               >
                 {ticket.status}

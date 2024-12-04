@@ -56,19 +56,24 @@
   font-weight: bold;
 }
 
-.statusOpen {
+.statusopen {
+  color: #e74c3c;
+}
+
+.statusassigned {
+  color: #f39c12;
+}
+
+.statusin-progress {
   color: #3498db;
-  font-weight: bold;
 }
 
-.statusInProgress {
-  color: #f1c40f;
-  font-weight: bold;
+.statusresolved {
+  color: #2ecc71;
 }
 
-.statusClosed {
-  color: #95a5a6;
-  font-weight: bold;
+.statusclosed {
+  color: #747474;
 }
 
 .actionButtons {
