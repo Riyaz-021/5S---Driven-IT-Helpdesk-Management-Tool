@@ -104,26 +104,26 @@
 
 /* Status Styles */
 .statusOpen {
-  color: #ff3d3d; /* Blue */
+  color: #ff3d3d;
   font-weight: bold;
 }
 
 .statusAssigned {
-  color: #f39c12; /* Yellow/Orange */
+  color: #f39c12;
   font-weight: bold;
 }
 
 .statusInProgress {
-  color: #ffd700;
+  color: #3498db;
   font-weight: bold;
 }
 
 .statusResolved {
-  color: #27ae60; /* Green */
+  color: #27ae60;
   font-weight: bold;
 }
 
 .statusClosed {
-  color: #3498db; /* Green */
+  color: #7f8c8d;
   font-weight: bold;
 }

@@ -555,6 +555,35 @@ app.get(
   }
 );
 
+/* Agent Ticket View */
+app.get(
+  "/helpdesk/agent_tickets/:ticketId",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const { ticketId } = req.params;
+
+      if (!mongoose.Types.ObjectId.isValid(ticketId)) {
+        return res.status(400).json({ message: "Invalid ticket ID format" });
+      }
+
+      const ticket = await Ticket.findById(ticketId)
+        .populate("userId", "username email")
+        .populate("assignedTo", "username email");
+
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      res.json(ticket);
+    } catch (err) {
+      console.error("Error fetching ticket details:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
 /* Take-up Ticket */
 app.patch(
   "/helpdesk/agent_tickets/:ticketId/take-up",
@@ -563,7 +592,7 @@ app.patch(
   async (req, res) => {
     try {
       const { ticketId } = req.params;
-      const agentId = req.user.id; // Get the logged-in agent's ID from JWT
+      const agentId = req.user.id;
 
       const ticket = await Ticket.findById(ticketId);
 

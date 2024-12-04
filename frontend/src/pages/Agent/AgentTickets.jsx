@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AgentSidebar from "./AgentSidebar";
 import styles from "./AgentTickets.module.css";
@@ -6,6 +7,8 @@ import styles from "./AgentTickets.module.css";
 const AgentTickets = () => {
   const [tickets, setTickets] = useState([]);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTickets = async () => {
@@ -101,11 +104,14 @@ const AgentTickets = () => {
                   </td>
                   <td>
                     <button
-                      onClick={() => handleView(ticket._id)}
+                      onClick={() =>
+                        navigate(`/helpdesk/agent_tickets/${ticket._id}`)
+                      }
                       className={styles.viewButton}
                     >
                       View
                     </button>
+
                     <button
                       onClick={() => handleTakeUp(ticket._id)}
                       className={styles.takeUpButton}
