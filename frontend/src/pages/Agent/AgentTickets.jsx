@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AgentSidebar from "./AgentSidebar";
+import SearchBar from "../SearchBar";
 import styles from "./AgentTickets.module.css";
 
 const AgentTickets = () => {
   const [tickets, setTickets] = useState([]);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredTickets, setFilteredTickets] = useState([]);
 
   const navigate = useNavigate();
 
@@ -20,6 +23,7 @@ const AgentTickets = () => {
           }
         );
         setTickets(response.data);
+        setFilteredTickets(response.data);
       } catch (err) {
         console.error(
           "Error fetching tickets:",
@@ -31,6 +35,17 @@ const AgentTickets = () => {
 
     fetchTickets();
   }, []);
+
+  useEffect(() => {
+    const filtered = tickets.filter((ticket) => {
+      return (
+        ticket.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        ticket._id.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    });
+
+    setFilteredTickets(filtered);
+  }, [searchQuery, tickets]);
 
   if (error) {
     return (
@@ -71,6 +86,11 @@ const AgentTickets = () => {
       <div className={styles.agentContent}>
         <h1 className={styles.pageTitle}>My Tickets</h1>
         <div className={styles.ticketsContainer}>
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            placeholder="Search by Title or ID"
+          />
           <table className={styles.ticketsTable}>
             <thead>
               <tr>
@@ -83,7 +103,7 @@ const AgentTickets = () => {
               </tr>
             </thead>
             <tbody>
-              {tickets.map((ticket) => (
+              {filteredTickets.map((ticket) => (
                 <tr key={ticket._id}>
                   <td>{ticket._id}</td>
                   <td>{ticket.title}</td>

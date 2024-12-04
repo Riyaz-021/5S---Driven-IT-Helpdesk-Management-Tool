@@ -301,7 +301,10 @@ app.get(
   authorizeRole("Admin"),
   async (req, res) => {
     try {
-      const ticket = await Ticket.findById(req.params.id);
+      const ticket = await Ticket.findById(req.params.id)
+        .populate("userId", "username email")
+        .populate("assignedTo", "username email");
+
       if (!ticket) {
         return res.status(404).json({ message: "Ticket not found" });
       }
@@ -579,6 +582,63 @@ app.get(
       res.json(ticket);
     } catch (err) {
       console.error("Error fetching ticket details:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+/* Reject Ticket */
+app.patch(
+  "/helpdesk/agent_tickets/:ticketId/reject",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const { ticketId } = req.params;
+
+      const ticket = await Ticket.findByIdAndUpdate(
+        ticketId,
+        { assignedTo: null, status: "Open" },
+        { new: true }
+      );
+
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      res.json({
+        message: "Ticket rejected successfully and status set to Open",
+        ticket,
+      });
+    } catch (err) {
+      console.error("Error rejecting ticket:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+/* Resolve Ticket */
+app.patch(
+  "/helpdesk/agent_tickets/:ticketId/resolve",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const { ticketId } = req.params;
+
+      const ticket = await Ticket.findByIdAndUpdate(
+        ticketId,
+        { status: "Resolved" },
+        { new: true }
+      );
+
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      res.json({ message: "Ticket resolved successfully", ticket });
+    } catch (err) {
+      console.error("Error resolving ticket:", err);
       res.status(500).json({ message: "Internal server error" });
     }
   }

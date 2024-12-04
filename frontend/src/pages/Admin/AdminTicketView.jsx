@@ -55,6 +55,13 @@ const TicketView = () => {
           <p>
             <strong>Description:</strong> {ticket.description}
           </p>
+          <p>
+            <strong>Raised By:</strong> {ticket.userId?.username || "N/A"}
+          </p>
+          <p>
+            <strong>Assigned To:</strong>{" "}
+            {ticket.assignedTo?.username || "Unassigned"}
+          </p>
         </div>
         <StatusProgress status={ticket.status} />
       </div>
