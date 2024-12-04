@@ -678,6 +678,34 @@ app.patch(
   }
 );
 
+/* Agent Priorities */
+app.get(
+  "/helpdesk/agent_priorities",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const agentId = req.user.id;
+
+      // Fetch tickets assigned to the agent
+      const tickets = await Ticket.find({ assignedTo: agentId }).select(
+        "title priority status"
+      );
+
+      if (!tickets.length) {
+        return res
+          .status(404)
+          .json({ message: "No tickets assigned to this agent" });
+      }
+
+      res.json(tickets);
+    } catch (err) {
+      console.error("Error fetching agent priorities:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
 /* Role Authentication */
 app.get("/helpdesk/auth-status", authenticateUser, (req, res) => {
   res.status(200).json({ role: req.user.role });

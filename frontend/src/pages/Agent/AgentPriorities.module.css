@@ -1,0 +1,110 @@
+/* General Layout */
+.agentDashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.agentContent {
+  flex-grow: 1;
+  margin-left: 300px; /* Sidebar width */
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.agentTitle {
+  font-size: 1.8rem;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+/* Stat Boxes */
+.priorityStats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.statBox {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.priorityHighBox {
+  background-color: #e74c3c;
+}
+
+.priorityMediumBox {
+  background-color: #f39c12;
+}
+
+.priorityLowBox {
+  background-color: #27ae60;
+}
+
+/* Tickets Table */
+.agentTicketTable {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.agentTicketTable th,
+.agentTicketTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.agentTicketTable th {
+  background-color: #053c6f;
+  color: #ffffff;
+}
+
+.agentTicketTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.agentTicketTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.sortableColumn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sortableColumn:hover {
+  color: #007bff;
+}
+
+.sortIcon {
+  font-size: 0.8rem;
+  color: #007bff;
+}
+
+/* Priority Styles */
+.priorityHigh {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.priorityMedium {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.priorityLow {
+  color: #27ae60;
+  font-weight: bold;
+}
