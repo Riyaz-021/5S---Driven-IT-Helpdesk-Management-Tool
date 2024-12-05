@@ -1,3 +1,4 @@
+/* Scoped Styling for Settings Page */
 .settingsPage {
   display: flex;
   min-height: 100vh;
@@ -6,12 +7,12 @@
 
 .settingsContent {
   flex-grow: 1;
-  margin-left: 300px;
+  margin-left: 300px; /* Sidebar width */
   padding: 20px;
   background-color: #ffffff;
 }
 
-h1 {
+.settingsContent h1 {
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
@@ -25,21 +26,21 @@ h1 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-label {
+.settingsForm label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-weight: bold;
 }
 
-.input {
-  width: 100%;
+.settingsForm .input {
+  width: 95%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.submitButton {
+.settingsForm .submitButton {
   display: block;
   width: 100%;
   padding: 10px;
@@ -51,16 +52,16 @@ label {
   cursor: pointer;
 }
 
-.submitButton:hover {
+.settingsForm .submitButton:hover {
   background-color: #042a4c;
 }
 
-.success {
+.settingsForm .success {
   color: #27ae60;
   margin-bottom: 10px;
 }
 
-.error {
+.settingsForm .error {
   color: #e74c3c;
   margin-bottom: 10px;
 }
