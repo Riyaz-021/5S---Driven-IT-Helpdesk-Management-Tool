@@ -70,7 +70,7 @@ const AgentSidebar = () => {
         </Link>
         <br />
         <Link
-          to="/helpdesk/a_statuses"
+          to="/helpdesk/agent_statuses"
           onClick={() => handleTabClick("/helpdesk/a_statuses")}
           className={`${styles.link} ${
             activeTab === "/helpdesk/a_statuses" ? styles.active : ""

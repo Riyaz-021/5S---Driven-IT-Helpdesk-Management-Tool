@@ -23,6 +23,7 @@ import AgentDashboard from "./pages/Agent/AgentDashboard.jsx";
 import AgentTickets from "./pages/Agent/AgentTickets.jsx";
 import AgentViewTicket from "./pages/Agent/AgentViewTicket.jsx";
 import AgentPriorities from "./pages/Agent/AgentPriorities.jsx";
+import AgentStatuses from "./pages/Agent/AgentStatuses.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
@@ -168,6 +169,14 @@ function App() {
           element={
             <ProtectedRoute requiredRole="Agent">
               <AgentPriorities />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/helpdesk/agent_statuses"
+          element={
+            <ProtectedRoute requiredRole="Agent">
+              <AgentStatuses />
             </ProtectedRoute>
           }
         />

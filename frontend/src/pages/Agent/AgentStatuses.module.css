@@ -1,0 +1,126 @@
+/* General Layout */
+.adminDashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.adminContent {
+  flex-grow: 1;
+  margin-left: 300px;
+  padding: 20px;
+}
+
+.adminTitle {
+  font-size: 1.8rem;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+/* Stat Boxes */
+.statusStats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.statBox {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.openBox {
+  background-color: #e74c3c;
+}
+
+.assigned {
+  background-color: #f39c12;
+}
+
+.inProgressBox {
+  background-color: #3498db;
+}
+
+.resolvedBox {
+  background-color: #27ae60;
+}
+
+.closedBox {
+  background-color: #7f8c8d;
+}
+
+/* Tickets Table */
+.adminTicketTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sortableColumn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sortableColumn:hover {
+  color: #007bff;
+}
+
+.sortIcon {
+  font-size: 0.8rem;
+  color: #007bff;
+}
+
+.adminTicketTable th,
+.adminTicketTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.adminTicketTable th {
+  background-color: #053c6f;
+  color: #ffffff;
+}
+
+.adminTicketTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.adminTicketTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Status Styles */
+.statusOpen {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.statusAssigned {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.statusInProgress {
+  color: #3498db;
+  font-weight: bold;
+}
+
+.statusResolved {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.statusClosed {
+  color: #7f8c8d;
+  font-weight: bold;
+}

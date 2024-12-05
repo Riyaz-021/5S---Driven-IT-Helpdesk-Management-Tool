@@ -666,8 +666,8 @@ app.patch(
           .json({ message: "Ticket already assigned to another agent" });
       }
 
-      ticket.assignedTo = agentId; // Assign the ticket to the agent
-      ticket.status = "In Progress"; // Update the status
+      ticket.assignedTo = agentId;
+      ticket.status = "In Progress";
       await ticket.save();
 
       res.json({ message: "Ticket taken up successfully" });
@@ -701,6 +701,40 @@ app.get(
       res.json(tickets);
     } catch (err) {
       console.error("Error fetching agent priorities:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+/* Agent Statuses */
+app.get(
+  "/helpdesk/agent_statuses",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const agentId = req.user.id;
+
+      if (!agentId) {
+        return res
+          .status(400)
+          .json({ message: "Agent ID not found in request" });
+      }
+
+      // Fetch tickets assigned to the agent
+      const tickets = await Ticket.find({ assignedTo: agentId }).select(
+        "title status priority"
+      );
+
+      if (!tickets.length) {
+        return res
+          .status(404)
+          .json({ message: "No tickets assigned to this agent" });
+      }
+
+      res.json(tickets);
+    } catch (err) {
+      console.error("Error fetching agent statuses:", err);
       res.status(500).json({ message: "Internal server error" });
     }
   }
