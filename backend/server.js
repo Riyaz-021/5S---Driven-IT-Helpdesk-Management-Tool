@@ -197,6 +197,27 @@ app.post("/helpdesk/login", async (req, res) => {
   }
 });
 
+/* User Profile */
+app.get("/helpdesk/user/profile", authenticateUser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const user = await User.findById(userId).select("username role");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      username: user.username,
+      role: user.role,
+    });
+  } catch (err) {
+    console.error("Error fetching user profile:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 /* Raise Tickets Page */
 app.get("/helpdesk/tickets/create", (req, res) => {
   res.status(201).json({ message: "create ticket page" });
