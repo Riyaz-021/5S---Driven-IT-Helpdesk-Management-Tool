@@ -1,0 +1,127 @@
+.pageContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.mainContent {
+  margin-left: 300px;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #053c6f;
+  margin-bottom: 20px;
+}
+
+.ticketDetails {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
+.priorityHigh {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.priorityMedium {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.priorityLow {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.statusopen {
+  color: #e74c3c;
+}
+
+.statusassigned {
+  color: #f39c12;
+}
+
+.statusin-progress {
+  color: #3498db;
+}
+
+.statusresolved {
+  color: #2ecc71;
+}
+
+.statusclosed {
+  color: #747474;
+}
+
+.actionButtons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.rejectButton {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.resolveButton {
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.rejectButton:hover {
+  background-color: #c0392b;
+}
+
+.resolveButton:hover {
+  background-color: #27ae60;
+}
+
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: #e74c3c;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #3498db;
+  font-weight: bold;
+  margin-top: 20px;
+}

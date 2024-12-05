@@ -38,9 +38,8 @@
   font-size: 1.3rem;
   font-weight: bold;
 }
-
 .signOutBtn {
-  margin-top: auto; /* This pushes the button to the bottom */
+  margin-top: auto;
   padding: 10px;
   font-size: 1em;
   background-color: #e74c3c;

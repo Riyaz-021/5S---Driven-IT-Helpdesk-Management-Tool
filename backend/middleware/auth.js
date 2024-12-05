@@ -8,11 +8,14 @@ const authenticateUser = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, "secretKey"); // Replace "secretKey" with a secure environment variable
-    req.user = decoded; // Attach decoded user info to the request object
+    const decoded = jwt.verify(token, "secretKey"); // Decode token
+    req.user = {
+      id: decoded.id, // Assign user ID
+      role: decoded.role,
+    };
     next();
   } catch (error) {
-    console.error("Token verification error:", error);
+    console.error("Token Verification Error:", error); // Debug log for errors
     return res.status(401).json({ message: "Invalid or expired token" });
   }
 };

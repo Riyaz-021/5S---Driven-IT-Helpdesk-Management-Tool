@@ -42,6 +42,8 @@ function Login() {
           navigate("/helpdesk/user_dashboard");
         } else if (role === "Admin") {
           navigate("/helpdesk/admin_dashboard");
+        } else if (role === "Agent") {
+          navigate("/helpdesk/agent_dashboard");
         } else {
           setError("Unknown role. Please contact support.");
         }

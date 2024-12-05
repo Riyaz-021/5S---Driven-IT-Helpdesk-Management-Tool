@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import styles from "./AdminSidebar.module.css";
+import styles from "./AgentSidebar.module.css";
 
-const AdminSidebar = () => {
+const AgentSidebar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [activeTab, setActiveTab] = useState(location.pathname);
+  const location = useLocation(); // Get the current location
+  const [activeTab, setActiveTab] = useState(location.pathname); // Initialize with current path
 
   const handleLogout = async () => {
     try {
@@ -40,60 +40,50 @@ const AdminSidebar = () => {
       <br />
       <div className={styles.links}>
         <Link
-          to="/helpdesk/admin_dashboard"
-          onClick={() => handleTabClick("/helpdesk/admin_dashboard")}
+          to="/helpdesk/agent_dashboard"
+          onClick={() => handleTabClick("/helpdesk/agent_dashboard")}
           className={`${styles.link} ${
-            activeTab === "/helpdesk/admin_dashboard" ? styles.active : ""
+            activeTab === "/helpdesk/agent_dashboard" ? styles.active : ""
           }`}
         >
           <i className="fas fa-tachometer-alt"></i> Dashboard
         </Link>
         <br />
         <Link
-          to="/helpdesk/admin_tickets"
-          onClick={() => handleTabClick("/helpdesk/admin_tickets")}
+          to="/helpdesk/agent_tickets"
+          onClick={() => handleTabClick("/helpdesk/agent_tickets")}
           className={`${styles.link} ${
-            activeTab === "/helpdesk/admin_tickets" ? styles.active : ""
+            activeTab === "/helpdesk/agent_tickets" ? styles.active : ""
           }`}
         >
-          <i className="fas fa-ticket-alt"></i> Tickets
+          <i className="fas fa-ticket-alt"></i> MyTickets
         </Link>
         <br />
         <Link
-          to="/helpdesk/admin_priorities"
-          onClick={() => handleTabClick("/helpdesk/admin_priorities")}
+          to="/helpdesk/agent_priorities"
+          onClick={() => handleTabClick("/helpdesk/agent_priorities")}
           className={`${styles.link} ${
-            activeTab === "/helpdesk/admin_priorities" ? styles.active : ""
+            activeTab === "/helpdesk/agent_priorities" ? styles.active : ""
           }`}
         >
           <i className="fas fa-exclamation-circle"></i> Priorities
         </Link>
         <br />
         <Link
-          to="/helpdesk/admin_statuses"
-          onClick={() => handleTabClick("/helpdesk/admin_statuses")}
+          to="/helpdesk/agent_statuses"
+          onClick={() => handleTabClick("/helpdesk/agent_statuses")}
           className={`${styles.link} ${
-            activeTab === "/helpdesk/admin_statuses" ? styles.active : ""
+            activeTab === "/helpdesk/agent_statuses" ? styles.active : ""
           }`}
         >
           <i className="fas fa-tasks"></i> Statuses
         </Link>
         <br />
         <Link
-          to="/helpdesk/admin/users"
-          onClick={() => handleTabClick("/helpdesk/admin/users")}
+          to="/helpdesk/agent_settings"
+          onClick={() => handleTabClick("/helpdesk/agent_settings")}
           className={`${styles.link} ${
-            activeTab === "/helpdesk/admin/users" ? styles.active : ""
-          }`}
-        >
-          <i className="fas fa-users"></i> User Management
-        </Link>
-        <br />
-        <Link
-          to="/helpdesk/admin_settings"
-          onClick={() => handleTabClick("/helpdesk/admin_settings")}
-          className={`${styles.link} ${
-            activeTab === "/helpdesk/admin_settings" ? styles.active : ""
+            activeTab === "/helpdesk/agent_settings" ? styles.active : ""
           }`}
         >
           <i className="fa-solid fa-gear"></i> Settings
@@ -107,4 +97,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default AdminSidebar;
+export default AgentSidebar;
