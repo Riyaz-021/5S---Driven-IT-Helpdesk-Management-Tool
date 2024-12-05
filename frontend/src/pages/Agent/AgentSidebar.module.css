@@ -68,10 +68,11 @@
 }
 
 .active {
-  color: #ffe492; /* Text color for active tab */
+  color: #ffe492;
   font-size: 1.3rem;
   font-weight: bold;
 }
+
 .signOutBtn {
   margin-top: auto;
   padding: 10px;
