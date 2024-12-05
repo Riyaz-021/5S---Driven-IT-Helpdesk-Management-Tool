@@ -24,6 +24,7 @@ import AgentTickets from "./pages/Agent/AgentTickets.jsx";
 import AgentViewTicket from "./pages/Agent/AgentViewTicket.jsx";
 import AgentPriorities from "./pages/Agent/AgentPriorities.jsx";
 import AgentStatuses from "./pages/Agent/AgentStatuses.jsx";
+import AgentSettings from "./pages/Agent/AgentSettings.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
@@ -177,6 +178,14 @@ function App() {
           element={
             <ProtectedRoute requiredRole="Agent">
               <AgentStatuses />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/helpdesk/agent_settings"
+          element={
+            <ProtectedRoute requiredRole="Agent">
+              <AgentSettings />
             </ProtectedRoute>
           }
         />

@@ -71,12 +71,22 @@ const AgentSidebar = () => {
         <br />
         <Link
           to="/helpdesk/agent_statuses"
-          onClick={() => handleTabClick("/helpdesk/a_statuses")}
+          onClick={() => handleTabClick("/helpdesk/agent_statuses")}
           className={`${styles.link} ${
-            activeTab === "/helpdesk/a_statuses" ? styles.active : ""
+            activeTab === "/helpdesk/agent_statuses" ? styles.active : ""
           }`}
         >
           <i className="fas fa-tasks"></i> Statuses
+        </Link>
+        <br />
+        <Link
+          to="/helpdesk/agent_settings"
+          onClick={() => handleTabClick("/helpdesk/agent_settings")}
+          className={`${styles.link} ${
+            activeTab === "/helpdesk/agent_settings" ? styles.active : ""
+          }`}
+        >
+          <i className="fa-solid fa-gear"></i> Settings
         </Link>
         <br />
         <button onClick={handleLogout} className={styles.signOutBtn}>

@@ -740,6 +740,44 @@ app.get(
   }
 );
 
+/* Agent Settings */
+app.patch(
+  "/helpdesk/agent/settings",
+  authenticateUser,
+  authorizeRole("Agent"),
+  async (req, res) => {
+    try {
+      const agentId = req.user.id;
+      const { username, password } = req.body;
+
+      // Prepare update fields
+      const updateFields = {};
+      if (username) updateFields.username = username;
+      if (password) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        updateFields.password = hashedPassword;
+      }
+
+      const updatedAgent = await User.findByIdAndUpdate(agentId, updateFields, {
+        new: true,
+        runValidators: true,
+      });
+
+      if (!updatedAgent) {
+        return res.status(404).json({ message: "Agent not found" });
+      }
+
+      res.json({
+        message: "Settings updated successfully",
+        user: updatedAgent,
+      });
+    } catch (err) {
+      console.error("Error updating agent settings:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
 /* Role Authentication */
 app.get("/helpdesk/auth-status", authenticateUser, (req, res) => {
   res.status(200).json({ role: req.user.role });
