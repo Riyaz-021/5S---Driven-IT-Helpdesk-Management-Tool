@@ -1,12 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { fetchUserProfile } from "../../utils/helper";
 import styles from "./AgentSidebar.module.css";
 
 const AgentSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation(); // Get the current location
+  const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState(location.pathname); // Initialize with current path
+
+  // Fetch user profile
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const data = await fetchUserProfile();
+        setUser(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getUserData();
+  }, []);
+
+  //Track location of tab
+  useEffect(() => {
+    // Update activeTab whenever the path changes
+    setActiveTab(location.pathname);
+  }, [location]);
+
+  const handleTabClick = (path) => {
+    setActiveTab(path); // Update the activeTab state
+  };
 
   const handleLogout = async () => {
     try {
@@ -23,21 +48,21 @@ const AgentSidebar = () => {
     }
   };
 
-  useEffect(() => {
-    // Update activeTab whenever the path changes
-    setActiveTab(location.pathname);
-  }, [location]);
-
-  const handleTabClick = (path) => {
-    setActiveTab(path); // Update the activeTab state
-  };
-
   return (
     <div className={styles.sidebar}>
       <div className={styles.brand}>IT - HelpDesk</div>
       <br />
-      <br />
-      <br />
+      {/* User Profile Section */}
+      <div className={styles.profileSection}>
+        <div className={styles.avatar}>
+          {user?.username?.[0]?.toUpperCase() || "U"}
+        </div>
+        <div className={styles.profileDetails}>
+          <span className={styles.profileName}>{user?.username || "User"}</span>
+          <br />
+          <span className={styles.profileRole}>{user?.role || "User"}</span>
+        </div>
+      </div>
       <div className={styles.links}>
         <Link
           to="/helpdesk/agent_dashboard"
@@ -48,7 +73,6 @@ const AgentSidebar = () => {
         >
           <i className="fas fa-tachometer-alt"></i> Dashboard
         </Link>
-        <br />
         <Link
           to="/helpdesk/agent_tickets"
           onClick={() => handleTabClick("/helpdesk/agent_tickets")}
@@ -58,7 +82,6 @@ const AgentSidebar = () => {
         >
           <i className="fas fa-ticket-alt"></i> MyTickets
         </Link>
-        <br />
         <Link
           to="/helpdesk/agent_priorities"
           onClick={() => handleTabClick("/helpdesk/agent_priorities")}
@@ -68,7 +91,6 @@ const AgentSidebar = () => {
         >
           <i className="fas fa-exclamation-circle"></i> Priorities
         </Link>
-        <br />
         <Link
           to="/helpdesk/agent_statuses"
           onClick={() => handleTabClick("/helpdesk/agent_statuses")}
@@ -78,7 +100,6 @@ const AgentSidebar = () => {
         >
           <i className="fas fa-tasks"></i> Statuses
         </Link>
-        <br />
         <Link
           to="/helpdesk/agent_settings"
           onClick={() => handleTabClick("/helpdesk/agent_settings")}
@@ -88,7 +109,6 @@ const AgentSidebar = () => {
         >
           <i className="fa-solid fa-gear"></i> Settings
         </Link>
-        <br />
         <button onClick={handleLogout} className={styles.signOutBtn}>
           <i className="fas fa-sign-out-alt"></i> Logout
         </button>
