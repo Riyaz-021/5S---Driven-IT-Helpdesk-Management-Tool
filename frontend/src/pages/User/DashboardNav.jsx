@@ -68,6 +68,16 @@ function DashboardSidebar() {
           <i className="fas fa-envelope"></i> Contact
         </Link>
         <br />
+        <Link
+          to="/helpdesk/user_settings"
+          onClick={() => handleTabClick("/helpdesk/user_settings")}
+          className={`${styles.link} ${
+            activeTab === "/helpdesk/user_settings" ? styles.active : ""
+          }`}
+        >
+          <i className="fa-solid fa-gear"></i> Settings
+        </Link>
+        <br />
         <button onClick={handleLogout} className={styles.signOutBtn}>
           <i className="fas fa-sign-out-alt"></i> Logout
         </button>

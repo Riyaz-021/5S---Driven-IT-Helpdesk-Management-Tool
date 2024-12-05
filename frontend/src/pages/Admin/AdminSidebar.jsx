@@ -89,6 +89,16 @@ const AdminSidebar = () => {
           <i className="fas fa-users"></i> User Management
         </Link>
         <br />
+        <Link
+          to="/helpdesk/admin_settings"
+          onClick={() => handleTabClick("/helpdesk/admin_settings")}
+          className={`${styles.link} ${
+            activeTab === "/helpdesk/admin_settings" ? styles.active : ""
+          }`}
+        >
+          <i className="fa-solid fa-gear"></i> Settings
+        </Link>
+        <br />
         <button onClick={handleLogout} className={styles.signOutBtn}>
           <i className="fas fa-sign-out-alt"></i> Logout
         </button>

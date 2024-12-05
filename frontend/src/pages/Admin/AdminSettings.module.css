@@ -1,0 +1,67 @@
+/* Scoped Styling for Settings Page */
+.settingsPage {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.settingsContent {
+  flex-grow: 1;
+  margin-left: 300px; /* Sidebar width */
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.settingsContent h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.settingsForm {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settingsForm label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.settingsForm .input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.settingsForm .submitButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #053c6f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.settingsForm .submitButton:hover {
+  background-color: #042a4c;
+}
+
+.settingsForm .success {
+  color: #27ae60;
+  margin-bottom: 10px;
+}
+
+.settingsForm .error {
+  color: #e74c3c;
+  margin-bottom: 10px;
+}

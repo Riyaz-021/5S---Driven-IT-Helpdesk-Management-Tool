@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import UserDashboard from "./pages/User/UserDashboard.jsx";
 import CreateTicket from "./pages/User/CreateTicket.jsx";
 import TicketView from "./pages/User/TicketView.jsx";
+import UserSettings from "./pages/User/UserSettings.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import AdminTickets from "./pages/Admin/AdminTickets.jsx";
 import AdminTicketView from "./pages/Admin/AdminTicketView.jsx";
@@ -19,6 +20,7 @@ import AdminStatuses from "./pages/Admin/AdminStatuses.jsx";
 import UserManagement from "./pages/Admin/UserManagement.jsx";
 import AddUser from "./pages/Admin/AddUser.jsx";
 import EditUser from "./pages/Admin/EditUser.jsx";
+import AdminSettings from "./pages/Admin/AdminSettings.jsx";
 import AgentDashboard from "./pages/Agent/AgentDashboard.jsx";
 import AgentTickets from "./pages/Agent/AgentTickets.jsx";
 import AgentViewTicket from "./pages/Agent/AgentViewTicket.jsx";
@@ -58,6 +60,14 @@ function App() {
           element={
             <ProtectedRoute requiredRole="User">
               <TicketView />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/helpdesk/user_settings"
+          element={
+            <ProtectedRoute requiredRole="User">
+              <UserSettings />
             </ProtectedRoute>
           }
         />
@@ -134,6 +144,15 @@ function App() {
           element={
             <ProtectedRoute requiredRole="Admin">
               <EditUser />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/helpdesk/admin_settings"
+          element={
+            <ProtectedRoute requiredRole="Admin">
+              <AdminSettings />
             </ProtectedRoute>
           }
         />
