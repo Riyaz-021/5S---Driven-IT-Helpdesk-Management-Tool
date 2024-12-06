@@ -1,0 +1,141 @@
+.userTicketsPage {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  margin-left: 300px;
+  flex: 1;
+  padding: 20px;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.raiseTicketButton {
+  padding: 10px 20px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.raiseTicketButton:hover {
+  background-color: #0056b3;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+}
+
+.controls {
+  margin-bottom: 0px;
+}
+
+.searchBar {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.ticketsTable {
+  margin-top: 0px;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ticketsTable th,
+.ticketsTable td {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.ticketsTable th {
+  background-color: #003366;
+  color: #fff;
+  cursor: pointer;
+}
+
+.ticketsTable td {
+  border-bottom: 1px solid #ddd;
+}
+
+.sortableColumn {
+  background-color: #00509e; /* Light blue background for sortable columns */
+  color: #ffffff; /* White text */
+  cursor: pointer; /* Pointer cursor to indicate interactivity */
+  transition: background-color 0.3s ease;
+}
+
+.sortableColumn:hover {
+  background-color: #003366; /* Darker blue on hover */
+}
+
+.sortIcon {
+  margin-left: 5px; /* Space between text and the sort arrow */
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+.priorityHigh {
+  color: red;
+}
+
+.priorityMedium {
+  color: orange;
+}
+
+.priorityLow {
+  color: green;
+}
+
+.statusOpen {
+  color: red;
+}
+
+.statusAssigned {
+  color: blue;
+}
+
+.statusInProgress {
+  color: orange;
+}
+
+.statusResolved {
+  color: green;
+}
+
+.statusClosed {
+  color: grey;
+}
+
+.viewButton,
+.deleteButton {
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.viewButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

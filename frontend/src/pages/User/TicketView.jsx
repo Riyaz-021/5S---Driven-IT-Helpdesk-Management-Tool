@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./TicketView.module.css";
-import DashboardNav from "./DashboardNav";
+import DashboardNav from "./UserSidebar";
 import StatusProgress from "../StatusProgress";
 
 function TicketView() {
@@ -92,8 +92,8 @@ function TicketView() {
               <span className={statusClass}>{ticket.status}</span>
             </p>
             <p>
-              <span className={styles.label}>Created By:</span>{" "}
-              {ticket.createdBy}
+              <span className={styles.label}>Assigned To:</span>{" "}
+              {ticket.assignedTo?.username || "Unassigned"}
             </p>
             <p>
               <span className={styles.label}>Created At:</span>{" "}

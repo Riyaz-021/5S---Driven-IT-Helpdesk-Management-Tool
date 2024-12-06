@@ -78,16 +78,37 @@ const addSingleUser = async () => {
 //addSingleUser();
 
 app.get(
-  "/helpdesk/user_dashboard",
+  "/helpdesk/user_dashboard/",
   authenticateUser,
   authorizeRole("User"),
   async (req, res) => {
     try {
-      const userTickets = await Ticket.find({ userId: req.user.id });
-      res.json({ tickets: userTickets });
-    } catch (error) {
-      console.error("Error fetching user tickets:", error);
-      res.status(500).json({ error: "Internal server error" });
+      // Calculate Stats
+      const totalTickets = await Ticket.countDocuments({
+        userId: new mongoose.Types.ObjectId(req.user.id),
+      });
+      const pendingTickets = await Ticket.countDocuments({
+        userId: new mongoose.Types.ObjectId(req.user.id),
+        status: { $in: ["Open", "Assigned", "In Progress"] },
+      });
+      const resolvedTickets = await Ticket.countDocuments({
+        userId: new mongoose.Types.ObjectId(req.user.id),
+        status: { $in: ["Resolved", "Closed"] },
+      });
+      const highPriority = await Ticket.countDocuments({
+        userId: new mongoose.Types.ObjectId(req.user.id),
+        priority: "High",
+      });
+      // Send Stats
+      res.json({
+        totalTickets,
+        pendingTickets,
+        resolvedTickets,
+        highPriority,
+      });
+    } catch (err) {
+      console.error("Error fetching user dashboard stats:", err);
+      res.status(500).json({ message: "Internal server error" });
     }
   }
 );
@@ -218,12 +239,49 @@ app.get("/helpdesk/user/profile", authenticateUser, async (req, res) => {
   }
 });
 
-/* Raise Tickets Page */
-app.get("/helpdesk/tickets/create", (req, res) => {
-  res.status(201).json({ message: "create ticket page" });
+/* User Welcome */
+app.get("/helpdesk/user_profile", authenticateUser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id, "username");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json({ username: user.username });
+  } catch (err) {
+    console.error("Error fetching user profile:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
-app.post("/helpdesk/tickets/create", authenticateUser, async (req, res) => {
+/* User Tickets */
+app.get(
+  "/helpdesk/user_tickets",
+  authenticateUser,
+  authorizeRole("User"),
+  async (req, res) => {
+    try {
+      const tickets = await Ticket.find({ userId: req.user.id }).sort({
+        createdAt: -1,
+      });
+      res.json(tickets);
+    } catch (err) {
+      console.error("Error fetching user tickets:", err);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+/* Raise Tickets Page */
+app.get(
+  "/helpdesk/user/raise_ticket",
+  authenticateUser,
+  authorizeRole("User"),
+  (req, res) => {
+    res.status(201).json({ message: "create ticket page" });
+  }
+);
+
+app.post("/helpdesk/user/raise_ticket", authenticateUser, async (req, res) => {
   const { title, description, priority } = req.body;
 
   try {
@@ -245,59 +303,74 @@ app.post("/helpdesk/tickets/create", authenticateUser, async (req, res) => {
 });
 
 /* View Individua Ticket */
-app.get("/helpdesk/tickets/:id", authenticateUser, async (req, res) => {
-  try {
-    const ticket = await Ticket.findById(req.params.id);
-    if (!ticket) {
-      return res.status(404).json({ message: "Ticket not found" });
+app.get(
+  "/helpdesk/tickets/:id",
+  authenticateUser,
+  authorizeRole("User"),
+  async (req, res) => {
+    try {
+      const ticket = await Ticket.findById(req.params.id);
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+      res.status(200).json({ ticket });
+    } catch (error) {
+      console.error("Error fetching ticket details:", error);
+      res.status(500).json({ message: "Server error" });
     }
-    res.status(200).json({ ticket });
-  } catch (error) {
-    console.error("Error fetching ticket details:", error);
-    res.status(500).json({ message: "Server error" });
   }
-});
+);
 
 /* Update Ticket */
-app.patch("/helpdesk/tickets/:id", authenticateUser, async (req, res) => {
-  const { id } = req.params;
-  const { status } = req.body;
+app.patch(
+  "/helpdesk/tickets/:id",
+  authenticateUser,
+  authorizeRole("User"),
+  async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
 
-  try {
-    const ticket = await Ticket.findByIdAndUpdate(
-      id,
-      { status },
-      { new: true }
-    );
+    try {
+      const ticket = await Ticket.findByIdAndUpdate(
+        id,
+        { status },
+        { new: true }
+      );
 
-    if (!ticket) {
-      return res.status(404).json({ message: "Ticket not found" });
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      res.status(200).json({ ticket });
+    } catch (error) {
+      console.error("Error updating ticket status:", error);
+      res.status(500).json({ message: "Server error" });
     }
-
-    res.status(200).json({ ticket });
-  } catch (error) {
-    console.error("Error updating ticket status:", error);
-    res.status(500).json({ message: "Server error" });
   }
-});
+);
 
 /* Delete Ticket */
-app.delete("/helpdesk/tickets/:id", authenticateUser, async (req, res) => {
-  try {
-    const ticketId = req.params.id;
+app.delete(
+  "/helpdesk/user_tickets/:id",
+  authenticateUser,
+  authorizeRole("User"),
+  async (req, res) => {
+    try {
+      const ticketId = req.params.id;
 
-    const deletedTicket = await Ticket.findByIdAndDelete(ticketId);
+      const deletedTicket = await Ticket.findByIdAndDelete(ticketId);
 
-    if (!deletedTicket) {
-      return res.status(404).json({ message: "Ticket not found" });
+      if (!deletedTicket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      res.status(200).json({ message: "Ticket deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting ticket:", error);
+      res.status(500).json({ message: "Server error while deleting ticket" });
     }
-
-    res.status(200).json({ message: "Ticket deleted successfully" });
-  } catch (error) {
-    console.error("Error deleting ticket:", error);
-    res.status(500).json({ message: "Server error while deleting ticket" });
   }
-});
+);
 
 /* User Settings */
 app.patch(

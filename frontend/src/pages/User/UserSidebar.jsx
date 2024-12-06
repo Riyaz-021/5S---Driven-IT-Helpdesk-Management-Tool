@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { fetchUserProfile } from "../../utils/helper.js";
-import styles from "./DashboardNav.module.css";
+import styles from "./UserSidebar.module.css";
 
-const DashboardSidebar = () => {
+const UserSidebar = () => {
   const [user, setUser] = useState(null);
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname);
@@ -80,6 +80,15 @@ const DashboardSidebar = () => {
           <i className="fas fa-ticket-alt"></i> My Tickets
         </Link>
         <Link
+          to="/helpdesk/raise_tickets"
+          onClick={() => handleTabClick("/helpdesk/raise_tickets")}
+          className={`${styles.link} ${
+            activeTab === "/helpdesk/raise_tickets" ? styles.active : ""
+          }`}
+        >
+          <i className="fa-solid fa-pen-to-square"></i> Raise Ticket
+        </Link>
+        <Link
           to="/helpdesk/user_settings"
           onClick={() => handleTabClick("/helpdesk/user_settings")}
           className={`${styles.link} ${
@@ -96,4 +105,4 @@ const DashboardSidebar = () => {
   );
 };
 
-export default DashboardSidebar;
+export default UserSidebar;
