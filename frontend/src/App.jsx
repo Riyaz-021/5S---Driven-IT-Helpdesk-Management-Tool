@@ -9,7 +9,7 @@ import Homepage from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import UserDashboard from "./pages/User/UserDashboard.jsx";
-import CreateTicket from "./pages/User/CreateTicket.jsx";
+import UserTickets from "./pages/User/UserTickets.jsx";
 import TicketView from "./pages/User/TicketView.jsx";
 import UserSettings from "./pages/User/UserSettings.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
@@ -28,6 +28,7 @@ import AgentViewTicket from "./pages/Agent/AgentViewTicket.jsx";
 import AgentPriorities from "./pages/Agent/AgentPriorities.jsx";
 import AgentStatuses from "./pages/Agent/AgentStatuses.jsx";
 import AgentSettings from "./pages/Agent/AgentSettings.jsx";
+import RaiseTicket from "./pages/User/RaiseTicket.jsx";
 
 function App() {
   return (
@@ -48,10 +49,18 @@ function App() {
           }
         />
         <Route
-          path="/helpdesk/tickets/create"
+          path="/helpdesk/user_tickets"
           element={
             <ProtectedRoute requiredRole="User">
-              <CreateTicket />
+              <UserTickets />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/helpdesk/raise_tickets"
+          element={
+            <ProtectedRoute requiredRole="User">
+              <RaiseTicket />
             </ProtectedRoute>
           }
         />

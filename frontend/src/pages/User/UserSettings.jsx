@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DashboardSidebar from "./DashboardNav";
+import DashboardSidebar from "./UserSidebar";
 import styles from "./UserSettings.module.css";
 
 const UserSettings = () => {
