@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Homepage from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
+import ProtectedRoute from "./pages/ProtectedRoute";
 import UserDashboard from "./pages/User/UserDashboard.jsx";
 import CreateTicket from "./pages/User/CreateTicket.jsx";
 import TicketView from "./pages/User/TicketView.jsx";
@@ -27,7 +28,6 @@ import AgentViewTicket from "./pages/Agent/AgentViewTicket.jsx";
 import AgentPriorities from "./pages/Agent/AgentPriorities.jsx";
 import AgentStatuses from "./pages/Agent/AgentStatuses.jsx";
 import AgentSettings from "./pages/Agent/AgentSettings.jsx";
-import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
