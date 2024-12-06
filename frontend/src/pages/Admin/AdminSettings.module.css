@@ -2,14 +2,14 @@
 .settingsPage {
   display: flex;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #f9f9f9;
 }
 
 .settingsContent {
   flex-grow: 1;
   margin-left: 300px; /* Sidebar width */
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
 }
 
 .settingsContent h1 {
