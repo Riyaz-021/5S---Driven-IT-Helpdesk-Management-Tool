@@ -61,7 +61,7 @@
   color: #f1c40f;
 }
 
-.status.in-progress {
+.status.inprogress {
   color: #3498db;
 }
 
@@ -99,7 +99,8 @@
 
 .viewButton,
 .takeUpButton {
-  padding: 8px 15px;
+  width: 80px;
+  padding: 5px 10px;
   font-size: 0.9em;
   border: none;
   border-radius: 5px;
@@ -125,4 +126,9 @@
 
 .takeUpButton:hover {
   background-color: #27ae60;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 10px; /* Add spacing between buttons */
 }

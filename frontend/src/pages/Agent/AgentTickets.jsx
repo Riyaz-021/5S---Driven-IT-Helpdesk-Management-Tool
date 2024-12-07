@@ -96,7 +96,6 @@ const AgentTickets = () => {
               <tr>
                 <th>Ticket ID</th>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Status</th>
                 <th>Priority</th>
                 <th>Actions</th>
@@ -107,7 +106,6 @@ const AgentTickets = () => {
                 <tr key={ticket._id}>
                   <td>{ticket._id}</td>
                   <td>{ticket.title}</td>
-                  <td>{ticket.description}</td>
                   <td
                     className={`${styles.status} ${
                       styles[ticket.status.toLowerCase().replace(" ", "")]
@@ -123,21 +121,22 @@ const AgentTickets = () => {
                     {ticket.priority}
                   </td>
                   <td>
-                    <button
-                      onClick={() =>
-                        navigate(`/helpdesk/agent_tickets/${ticket._id}`)
-                      }
-                      className={styles.viewButton}
-                    >
-                      View
-                    </button>
-
-                    <button
-                      onClick={() => handleTakeUp(ticket._id)}
-                      className={styles.takeUpButton}
-                    >
-                      Take Up
-                    </button>
+                    <div className={styles.actionButtons}>
+                      <button
+                        onClick={() =>
+                          navigate(`/helpdesk/agent_tickets/${ticket._id}`)
+                        }
+                        className={styles.viewButton}
+                      >
+                        View
+                      </button>
+                      <button
+                        onClick={() => handleTakeUp(ticket._id)}
+                        className={styles.takeUpButton}
+                      >
+                        Take Up
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
