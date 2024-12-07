@@ -309,7 +309,10 @@ app.get(
   authorizeRole("User"),
   async (req, res) => {
     try {
-      const ticket = await Ticket.findById(req.params.id);
+      const ticket = await Ticket.findById(req.params.id).populate(
+        "assignedTo",
+        "username email"
+      );
       if (!ticket) {
         return res.status(404).json({ message: "Ticket not found" });
       }
