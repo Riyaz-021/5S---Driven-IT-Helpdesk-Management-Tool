@@ -147,6 +147,7 @@ app.get(
     try {
       const assigned = await Ticket.countDocuments({
         assignedTo: new mongoose.Types.ObjectId(req.user.id),
+        status: "Assigned",
       });
 
       const inProgress = await Ticket.countDocuments({
@@ -156,7 +157,7 @@ app.get(
 
       const resolved = await Ticket.countDocuments({
         assignedTo: new mongoose.Types.ObjectId(req.user.id),
-        $or: [{ status: "Resolved" }, { status: "Closed" }],
+        status: "Resolved",
       });
 
       res.status(200).json({ assigned, inProgress, resolved });
@@ -776,7 +777,7 @@ app.get(
   authorizeRole("Agent"),
   async (req, res) => {
     try {
-      const agentId = req.user.id;
+      const agentId = req.user.id; // Extract agent's ID from JWT
       const tickets = await Ticket.find({
         assignedTo: new mongoose.Types.ObjectId(agentId),
       }); // Fetch tickets assigned to the agent
