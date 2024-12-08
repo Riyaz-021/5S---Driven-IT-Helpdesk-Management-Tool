@@ -45,6 +45,21 @@ function TicketView() {
     }
   };
 
+  const handleReopen = async () => {
+    try {
+      await axios.patch(
+        `http://localhost:3000/helpdesk/tickets/${id}/reopen`,
+        {},
+        { withCredentials: true }
+      );
+      alert("Ticket successfully reopened!");
+      setTicket({ ...ticket, status: "Open" });
+    } catch (err) {
+      alert("Error reopening ticket.");
+      console.error(err);
+    }
+  };
+
   if (error) {
     return <p className={styles.error}>{error}</p>;
   }
@@ -107,6 +122,13 @@ function TicketView() {
             disabled={ticket.status === "Closed" || isClosing}
           >
             {isClosing ? "Closing..." : "Close Ticket"}
+          </button>
+          <button
+            className={styles.reopenButton}
+            onClick={handleReopen}
+            disabled={ticket.status !== "Closed"}
+          >
+            Reopen Ticket
           </button>
         </div>
       </div>

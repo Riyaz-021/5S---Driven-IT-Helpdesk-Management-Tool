@@ -107,3 +107,21 @@
   background-color: #ddd;
   cursor: not-allowed;
 }
+
+.reopenButton {
+  margin-left: 8px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.reopenButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
