@@ -352,6 +352,39 @@ app.patch(
   }
 );
 
+// Reopen Ticket
+app.patch(
+  "/helpdesk/tickets/:id/reopen",
+  authenticateUser,
+  authorizeRole("User"),
+  async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const ticket = await Ticket.findById(id);
+
+      if (!ticket) {
+        return res.status(404).json({ message: "Ticket not found" });
+      }
+
+      if (ticket.status !== "Closed") {
+        return res.status(400).json({
+          message: "Only tickets with status 'Closed' can be reopened.",
+        });
+      }
+
+      ticket.status = "Open";
+      ticket.assignedTo = null;
+      await ticket.save();
+
+      res.json({ message: "Ticket successfully reopened", ticket });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Error reopening ticket" });
+    }
+  }
+);
+
 /* Delete Ticket */
 app.delete(
   "/helpdesk/user_tickets/:id",
