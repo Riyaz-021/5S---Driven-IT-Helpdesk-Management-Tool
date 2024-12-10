@@ -6,10 +6,12 @@ const mongoose = require("mongoose");
 const { faker } = require("@faker-js/faker");
 const User = require("./models/Users.js");
 const Ticket = require("./models/Tickets.js");
+const ContactInfo = require("./models/ContactInfo");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { authenticateUser, authorizeRole } = require("./middleware/auth");
+//const transporter = require("./utils/emailService.js");
 const cors = require("cors");
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -175,6 +177,23 @@ app.get("/", (req, res) => {
 /* Index Page */
 app.get("/helpdesk", (req, res) => {
   res.json({ message: "Welcome to the HelpDesk API" });
+});
+
+/* Contact Page */
+app.post("/helpdesk/contact", async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+
+    const newContact = new ContactInfo({ name, email, subject, message });
+    await newContact.save();
+
+    res
+      .status(201)
+      .json({ message: "Contact information saved successfully!" });
+  } catch (error) {
+    console.error("Error saving contact information:", error);
+    res.status(500).json({ error: "Failed to save contact information" });
+  }
 });
 
 /* Login Page */

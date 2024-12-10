@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Homepage from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import UserDashboard from "./pages/User/UserDashboard.jsx";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<Navigate to="/helpdesk" replace />} />
         <Route path="/helpdesk" element={<Homepage />} />
         <Route path="/helpdesk/about" element={<About />} />
+        <Route path="/helpdesk/contact" element={<Contact />} />
         <Route path="/helpdesk/login" element={<Login />} />
 
         {/* User Dashboard Routes */}

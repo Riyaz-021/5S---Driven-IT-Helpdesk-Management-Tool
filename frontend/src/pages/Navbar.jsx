@@ -12,7 +12,7 @@ function Navbar() {
         <Link to="/helpdesk/about" className={styles.link}>
           About
         </Link>
-        <Link to="/contact" className={styles.link}>
+        <Link to="/helpdesk/contact" className={styles.link}>
           Contact
         </Link>
         <Link to="/helpdesk/login" className={styles.link}>
