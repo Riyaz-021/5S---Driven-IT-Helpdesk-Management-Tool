@@ -118,7 +118,12 @@ const About = () => {
             >
               support@ithelpdesk.com
             </a>{" "}
-            or visit the <strong>Contact</strong> page for more details.
+            or visit the{" "}
+            <a href="/helpdesk/contact">
+              {" "}
+              <strong>Contact</strong>{" "}
+            </a>{" "}
+            page for more details.
           </p>
         </section>
       </div>
