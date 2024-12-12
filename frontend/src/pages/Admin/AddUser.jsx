@@ -23,6 +23,11 @@ const AddUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const usernameRegex = /^[A-Za-z]/;
+    if (!usernameRegex.test(formData.username)) {
+      setError("Username must start with a letter.");
+      return;
+    }
     try {
       await axios.post("http://localhost:3000/helpdesk/admin/users", formData, {
         withCredentials: true,

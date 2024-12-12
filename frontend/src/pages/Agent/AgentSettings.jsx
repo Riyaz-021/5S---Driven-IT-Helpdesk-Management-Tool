@@ -20,6 +20,11 @@ const AgentSettings = () => {
     e.preventDefault();
     setMessage("");
     setError("");
+    const usernameRegex = /^[A-Za-z]/;
+    if (!usernameRegex.test(formData.username)) {
+      setError("Username must start with a letter.");
+      return;
+    }
     try {
       const response = await axios.patch(
         "http://localhost:3000/helpdesk/agent/settings",
