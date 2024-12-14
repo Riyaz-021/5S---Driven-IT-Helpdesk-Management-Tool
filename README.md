@@ -85,15 +85,14 @@ This tool is aimed at improving productivity, minimizing clutter, and standardiz
 
 3. Install dependencies for backend and frontend:
 
-   ````bash
+   ```bash
    cd backend
    npm install
 
-   ```bash
    cd ../frontend
    npm install
 
-   ````
+   ```
 
 4. Start the development servers
 
@@ -151,5 +150,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For queries or feedback, contact:
 
-**Email:** the5sithelpdesk@outlook.com
-**GitHub:** Riyaz-021
+1. **Email:** the5sithelpdesk@outlook.com
+2. **GitHub:** Riyaz-021
