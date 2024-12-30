@@ -17,7 +17,7 @@ const AgentTickets = () => {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/helpdesk/agent_tickets",
+          "http://localhost:3000/helpdesk/agent/tickets",
           {
             withCredentials: true,
           }
@@ -58,14 +58,14 @@ const AgentTickets = () => {
   const handleTakeUp = async (ticketId) => {
     try {
       await axios.patch(
-        `http://localhost:3000/helpdesk/agent_tickets/${ticketId}/take-up`,
+        `http://localhost:3000/helpdesk/agent/tickets/${ticketId}/take-up`,
         {
           withCredentials: true,
         }
       );
       alert("You have taken up the ticket!");
       const response = await axios.get(
-        "http://localhost:3000/helpdesk/agent_tickets",
+        "http://localhost:3000/helpdesk/agent/tickets",
         {
           withCredentials: true,
         }
