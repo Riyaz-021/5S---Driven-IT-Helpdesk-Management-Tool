@@ -135,7 +135,7 @@ This tool is aimed at improving productivity, minimizing clutter, and standardiz
 
 ## Contributing
 
-Contributions are welcome! To contribute:
+Contributions are welcome! To contribute:-
 
 1. Fork the repository.
 2. Create a new branch for your feature/fix.
