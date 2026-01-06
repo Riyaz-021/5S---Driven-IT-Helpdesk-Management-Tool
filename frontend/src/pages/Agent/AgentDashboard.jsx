@@ -15,7 +15,7 @@ const AgentDashboard = () => {
     const fetchStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/helpdesk/agent_dashboard",
+          "http://localhost:3000/helpdesk/agent/dashboard",
           { withCredentials: true }
         );
         setStats(response.data);

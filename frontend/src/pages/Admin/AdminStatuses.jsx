@@ -15,7 +15,7 @@ const AdminStatuses = () => {
   const [statusSortOrder, setStatusSortOrder] = useState("asc");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/helpdesk/admin_statuses").then((res) => {
+    axios.get("http://localhost:3000/helpdesk/admin/statuses").then((res) => {
       const data = res.data;
 
       const open = data.filter((ticket) => ticket.status === "Open").length;

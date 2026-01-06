@@ -16,7 +16,7 @@ function TicketView() {
 
   const fetchTicket = () => {
     axios
-      .get(`http://localhost:3000/helpdesk/tickets/${id}`, {
+      .get(`http://localhost:3000/helpdesk/user/tickets/${id}`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -32,7 +32,7 @@ function TicketView() {
     setIsClosing(true);
     try {
       await axios.patch(
-        `http://localhost:3000/helpdesk/tickets/${id}`,
+        `http://localhost:3000/helpdesk/user/tickets/${id}`,
         { status: "Closed" },
         { withCredentials: true }
       );
@@ -48,7 +48,7 @@ function TicketView() {
   const handleReopen = async () => {
     try {
       await axios.patch(
-        `http://localhost:3000/helpdesk/tickets/${id}/reopen`,
+        `http://localhost:3000/helpdesk/user/tickets/${id}/reopen`,
         {},
         { withCredentials: true }
       );

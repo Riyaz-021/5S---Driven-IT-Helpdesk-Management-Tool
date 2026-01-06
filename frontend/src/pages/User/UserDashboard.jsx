@@ -18,7 +18,7 @@ const UserDashboard = () => {
     const loadDashboardData = async () => {
       try {
         const stats = await axios.get(
-          "http://localhost:3000/helpdesk/user_dashboard",
+          "http://localhost:3000/helpdesk/user/dashboard",
           {
             withCredentials: true,
           }
@@ -26,7 +26,7 @@ const UserDashboard = () => {
         setStats(stats.data);
 
         const userProfile = await axios.get(
-          "http://localhost:3000/helpdesk/user_profile",
+          "http://localhost:3000/helpdesk/user/welcome",
           {
             withCredentials: true,
           }

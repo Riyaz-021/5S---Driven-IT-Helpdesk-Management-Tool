@@ -15,7 +15,7 @@ const AdminPriorities = () => {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/helpdesk/admin_priorities").then((res) => {
+    axios.get("http://localhost:3000/helpdesk/admin/priorities").then((res) => {
       const data = res.data;
 
       const highPriority = data.filter(
@@ -55,7 +55,7 @@ const AdminPriorities = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:3000/helpdesk/admin_priorities/${ticketId}`,
+        `http://localhost:3000/helpdesk/admin/priorities/${ticketId}`,
         { priority: nextPriority }
       );
 

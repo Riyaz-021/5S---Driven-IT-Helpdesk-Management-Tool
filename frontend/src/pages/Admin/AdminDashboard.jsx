@@ -14,7 +14,7 @@ const AdminDashboard = () => {
     const fetchMetrics = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/helpdesk/admin_dashboard",
+          "http://localhost:3000/helpdesk/admin/dashboard",
           { withCredentials: true }
         );
         const formattedData = [

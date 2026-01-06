@@ -16,7 +16,7 @@ const AgentViewTicket = () => {
     const fetchTicketDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/helpdesk/agent_tickets/${ticketId}`,
+          `http://localhost:3000/helpdesk/agent/tickets/${ticketId}`,
           { withCredentials: true }
         );
         setTicket(response.data);
@@ -35,7 +35,7 @@ const AgentViewTicket = () => {
   const handleReject = async () => {
     try {
       await axios.patch(
-        `http://localhost:3000/helpdesk/agent_tickets/${ticketId}/reject`,
+        `http://localhost:3000/helpdesk/agent/tickets/${ticketId}/reject`,
         {},
         { withCredentials: true }
       );
@@ -54,7 +54,7 @@ const AgentViewTicket = () => {
   const handleResolve = async () => {
     try {
       await axios.patch(
-        `http://localhost:3000/helpdesk/agent_tickets/${ticketId}/resolve`,
+        `http://localhost:3000/helpdesk/agent/tickets/${ticketId}/resolve`,
         {},
         { withCredentials: true }
       );

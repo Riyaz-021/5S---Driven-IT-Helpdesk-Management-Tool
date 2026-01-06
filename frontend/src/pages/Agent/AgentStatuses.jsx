@@ -18,7 +18,7 @@ const AgentStatuses = () => {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/helpdesk/agent_statuses",
+          "http://localhost:3000/helpdesk/agent/statuses",
           {
             withCredentials: true,
           }

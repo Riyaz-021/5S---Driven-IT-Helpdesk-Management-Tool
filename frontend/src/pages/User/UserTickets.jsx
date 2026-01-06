@@ -16,7 +16,7 @@ const UserTickets = () => {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/helpdesk/user_tickets",
+          "http://localhost:3000/helpdesk/user/tickets",
           { withCredentials: true }
         );
         setTickets(response.data);
@@ -75,7 +75,7 @@ const UserTickets = () => {
     if (window.confirm("Are you sure you want to delete this ticket?")) {
       try {
         await axios.delete(
-          `http://localhost:3000/helpdesk/user_tickets/${ticketId}`,
+          `http://localhost:3000/helpdesk/user/tickets/${ticketId}`,
           {
             withCredentials: true,
           }
